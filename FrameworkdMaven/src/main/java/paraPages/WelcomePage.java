@@ -6,15 +6,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class WelcomePage {
-	@FindBy(id="rightPanel")private WebElement text;
+	@FindBy(xpath="//p[text()=\"Your account was created successfully. You are now logged in.\"]")private WebElement text;
+	@FindBy(xpath="//a[text()=\"Log Out\"]")private WebElement logout;
 	
 	public WelcomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void gettext() {
-		String msg=text.getText();
-		System.out.println(msg);
+	public String gettext() {
+		String Actual=text.getText();
+		return Actual;
+	
 	}
-
+   public void Logout() {
+	   logout.click();
+	   
+   }
 }

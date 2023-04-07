@@ -1,22 +1,28 @@
 package paraTestClass;
 
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import BrowserFactory.BaseClass;
+import Excel.ExcelReader;
 import paraPages.Homepage;
 import paraPages.RegistrationPage;
+import paraPages.RegistrationPage2;
 import paraPages.WelcomePage;
 
-public class ParaTestScript {
+public class ParaTestScript2 {
 	WebDriver driver;
 	BaseClass b;
 	Homepage h;
-	RegistrationPage r;
+	RegistrationPage2 r;
 	WelcomePage w;
 	
        @BeforeClass
@@ -25,24 +31,34 @@ public class ParaTestScript {
     	   driver=b.OpenChromeBrowser();
     	   
        }
-	    @Test
-	    public void RegistrationData() {
+       @DataProvider
+       public Object[][] getData() throws EncryptedDocumentException, IOException {
+    	   ExcelReader E=new ExcelReader();
+    	   Object[][] data = E.getTestData();
+    	  return data; 
+    	   
+       }
+       
+       
+       
+	    @Test(dataProvider="getData")
+	    public void RegistrationData(String Fname,String Lname,String Address,String City,String State,String Zip,String Phone,String SSN,String UserName,String Password,String Cpassword) {
 	    h=new Homepage(driver);
 	    h.clickOnRegister();
        
 	    
-	    r=new RegistrationPage(driver);
-	    r.setfname();
-	    r.setlname();
-	    r.setadd();
-	    r.setcity();
-	    r.setstate();
-	    r.setzcode();
-	    r.setphone();
-	    r.setssn();
-	    r.setuname();
-	    r.setpword();
-	    r.setcpword();
+	    r=new RegistrationPage2(driver);
+	    r.setfname(Fname);
+	    r.setlname(Lname);
+	    r.setadd(Address);
+	    r.setcity(City);
+	    r.setstate(State);
+	    r.setzcode(Zip);
+	    r.setphone(Phone);
+	    r.setssn(SSN);
+	    r.setuname(UserName);
+	    r.setpword(Password);
+	    r.setcpword(Cpassword);
 	    r.clickregbtn();
 	    
 	    w=new WelcomePage(driver);

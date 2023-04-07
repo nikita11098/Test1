@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegistrationPage {
+public class RegistrationPage2 {
 
 	@FindBy(id="customer.firstName")private WebElement fname;
 	@FindBy(id="customer.lastName")private WebElement lname;
@@ -21,44 +21,44 @@ public class RegistrationPage {
 	@FindBy(xpath="//input[@value='Register']")private WebElement regbtn;
 	
 	
-	public RegistrationPage(WebDriver driver) {
+	public RegistrationPage2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void setfname() {
-		fname.sendKeys("Nikita");
+	public void setfname(String Fname) {
+		fname.sendKeys(Fname);
 	}
-	public void setlname() {
-		lname.sendKeys("Bacchav");
+	public void setlname(String Lname) {
+		lname.sendKeys(Lname);
 	}
-	public void setadd() {
-		add.sendKeys("D2-201,Ambika Township,Dindoli");
+	public void setadd(String Address) {
+		add.sendKeys(Address);
 	}
-	public void setcity() {
-		city.sendKeys("Surat");
+	public void setcity(String City) {
+		city.sendKeys(City);
 	}
-	public void setstate() {
-		state.sendKeys("Maharashtra");
+	public void setstate(String State) {
+		state.sendKeys(State);
 	}
-	public void setzcode() {
-		zcode.sendKeys("394210");
+	public void setzcode(String Zip) {
+		zcode.sendKeys(Zip);
 	}
-	public void setphone() {
-		phone.sendKeys("9168089677");
+	public void setphone(String Phone) {
+		phone.sendKeys(Phone);
 	}
-	public void setssn() {
-		ssn.sendKeys("123");
+	public void setssn(String SSN) {
+		ssn.sendKeys(SSN);
 	}
-	public void setuname() {
-		uname.sendKeys("nikitarupesh11098");
+	public void setuname(String UserName) {
+		uname.sendKeys(UserName);
 		
 	}
-	public void setpword() {
-	    pword.sendKeys("Nikita@123");
+	public void setpword(String Password) {
+	    pword.sendKeys(Password);
 	}
 	
-	public void setcpword() {
-		cpword.sendKeys("Nikita@123");
+	public void setcpword(String Cpassword) {
+		cpword.sendKeys(Cpassword);
 	}
  	public void clickregbtn() {
  		regbtn.click();
